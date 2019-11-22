@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    div#con {
+    background-color: black;
+    float: right;
+    width:400px;
+}
+
+    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Weather API</title>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+<link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WEATHER FORECAST</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="w.html">Lattitude&Longitude</a></li>
+ </ul>
+          <form class="navbar-form navbar-left" action="/action_page.php">
+            
+              </div>
+            </div>
+          </form>
+        </div>
+      </nav>
+
+
+<div class="container">
+  <div id="input-border">
+  <div id="input-style">
+      <input id="input" placeholder="Enter A City" onfocus="this.value=''">
+      <button class="btn btn-default" onclick="getWeather()">Search</button>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="box">
+
+    <div class="row">
+      <div class="col col-md-6">
+        <div id="map-data">
+        </div>
+
+      </div>
+      <div class="content" id="con">
+      <div class="col col-md-4">
+        <div id="weather-data" style="color:white;">
+        </div>
+        
+        <div id="welcome-message">
+          <h2 style="color:white">Know your area's weather</h2>
+        </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+<div class="footer">
+<p style="color:white;font-size:30px;text-align:center;">Made By <a href="https://enakshi123.github.io">ENAKSHI</a></p>
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+var zoom;
+var lon;
+var lat;
+
+function getWeather() {
+
+
+      //WEATHER API
+      var api = "https://api.openweathermap.org/data/2.5/weather?q=";
+      var city = document.getElementById("input").value;
+      var key = "&APPID=4980bb1e7366f5a8d033e4122ebc8756&units=imperial";
+
+    $.getJSON(api + city + key , showData);
+
+    function showData(json) {
+
+    //hide welcome message
+    document.getElementById("welcome-message").innerHTML = "";
+
+    document.getElementById("weather-data").innerHTML =  "<div id='weather-conditions'>" + json.weather[0].main  + "</div>" +
+    
+    "<br>" +  "<div>" +  "<span class='left'>" + "Location" + "</span>" + "<span class='right'>" + json.name + "</span>" + "</div>" +
+    "<br>" + 
+    "<div>" +  "<span class='left'>" + "Temperature" + "</span>" + "<span class='right'>" + json.main.temp + " °F" + "</span>" + "</div>" +
+    "<br>" + "<br>" +
+    "<div>" +  "<span class='left'>" + "Max Temperature" + "</span>" + "<span class='right'>" + json.main.temp_max + " °F" + "</span>" + "</div>" +
+    "<br>" + "<br>" +
+    "<div>" +  "<span class='left'>" + "Min Temperature" + "</span>" + "<span class='right'>" + json.main.temp_min + " °F" +  "</span>" + "</div>" +
+    "<br>" + 
+
+    "<div>" +  "<span class='left'>" + "Humidity" + "</span>" + "<span class='right'>" + json.main.humidity + "%" + "</span>" + "</div>"  +
+    "<br>" + "<br>";
+    "<div>" +  "<span class='left'>" + "Wind Speed" + "</span>" + "<span class='right'>" + json.wind.speed + " mph" + "</span>" + "</div>";
+
+
+
+   
+    //GOOGLE API
+
+    lon = json.coord.lon;
+    lat = json.coord.lat;
+    zoom = 11;
+
+
+    initMap();
+
+    }
+
+}
+
+//THIS STOPS GOOGLE API FROM COMPLAINING ABOUT EMPTY LAT LON VALUES
+
+if(lon == null || lat == null){
+  lon = -99.140625;
+  lat = 37.85750716;
+  zoom = 3;
+}
+
+
+
+
+
+function initMap(){
+  var map;
+var options = {
+    zoom: zoom,
+    center: {lat: lat, lng: lon}
+};
+
+ map = new google.maps.Map(document.getElementById('map-data'), options);
+
+}
+
+
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp6ZOfz-ZPAywynxUA5KT19VSq22gr-mg&callback=initMap" type="text/javascript">
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+body {
+   background-image: url(img/w1.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Bubblegum Sans', cursive;
+  
+  
+  }
+  .bo{
+    background-color: #6B7F98;;
+    opacity: .9;
+    }
+  
+  #welcome-message h2{
+    font-size: 50px;
+    letter-spacing: 4px;
+  }
+  
+  
+  #main-header {
+    text-align: center;
+    padding: 10px;
+    font-size: 50px;
+    background-color:white;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    opacity: .9;
+    border-radius: 8px;
+  }
+  
+  /* INPUT STYLES */
+  
+  #input-border{
+    margin: 0 auto;
+    width: 400px;
+    height: 80px;
+    background:gray;
+    opacity: .8;
+    margin-bottom: 50px;
+    border-radius: 8px;
+  }
+  
+  #input-style {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  
+  }
+  
+  #input-style input{
+    margin-top: 22px;
+    width: 250px;
+    height: 40px;
+    font-size:20px;
+  }
+  
+  #input-style button{
+    margin-bottom: 7px;
+    width: 100px;
+    margin-left: 6px;
+    font-size: 20px;
+  }
+  
+  
+  /* END OF INPUT STYLES */
+  
+  
+  /*API STYLING */
+  
+  #weather-conditions{
+    font-size: 30px;
+  
+  }
+  
+  .left{
+    float: left;
+    font-size: 25px;
+  }
+  
+  .right{
+    float: right;
+    font-size: 25px;
+  }
+  
+  
+  
+  
+  
+  /*GOOGLE maps*/
+  #map-data{
+    margin-bottom: 30px;
+    padding:30px;
+    width: 80%;
+    height: 400px;
+  
+    
+    .content {
+      background-color: rgba(0,0,0,0.7);
+       color: white;
+      padding: 40px;
+      height: 400px;
+      width: 450px;
+      margin: 100px auto; 
+    }
+    #weather-data{
+      position: absolute;
+      left:30%;
+    }
+  
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      background-color: #111;
+    }
+
+    #lattitude{
+      display: "block";
+    }
+
+    #longitude{
+      display: block;
+    }
+
+    #weather-result {
+      font-size: 26px;
+      text-align: center;
+  }
+  #lat {
+    background-color: transparent;
+    border: solid white;
+}
+  #long {
+  background-color: transparent;
+  border: solid white;
+}
