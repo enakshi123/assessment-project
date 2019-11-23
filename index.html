@@ -31,8 +31,8 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="w.html">Lattitude&Longitude</a></li>
  </ul>
-          <form class="navbar-form navbar-left" action="/action_page.php">
-            
+           <form class="navbar-form navbar-left">     
+              <!-- action="/action_page.php">  --> -->
               </div>
             </div>
           </form>
@@ -80,9 +80,7 @@
   </div>
 
 </div>
-<div class="footer">
-<p style="color:white;font-size:30px;text-align:center;">Made By <a href="https://enakshi123.github.io">ENAKSHI</a></p>
-</div>
+
 
 
 
@@ -107,7 +105,7 @@ function getWeather() {
 
     function showData(json) {
 
-    //hide welcome message
+    
     document.getElementById("welcome-message").innerHTML = "";
 
     document.getElementById("weather-data").innerHTML =  "<div id='weather-conditions'>" + json.weather[0].main  + "</div>" +
@@ -140,18 +138,6 @@ function getWeather() {
     }
 
 }
-
-//THIS STOPS GOOGLE API FROM COMPLAINING ABOUT EMPTY LAT LON VALUES
-
-if(lon == null || lat == null){
-  lon = -99.140625;
-  lat = 37.85750716;
-  zoom = 3;
-}
-
-
-
-
 
 function initMap(){
   var map;
